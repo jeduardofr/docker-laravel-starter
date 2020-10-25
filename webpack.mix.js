@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.react("resources/js/index.js", "public/js").browserSync({
+    open: "external",
+    proxy: "webserver",
+    files: ["resources/views/**/*.php", "public/js/*.js"],
+    notify: false
+});
+
+if (mix.inProduction()) {
+    mix.version();
+}
