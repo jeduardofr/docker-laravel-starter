@@ -11,7 +11,7 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.react("resources/js/index.js", "public/js").browserSync({
+mix.ts("resources/ts/index.tsx", "public/js").browserSync({
     open: "external",
     proxy: "webserver",
     files: ["resources/views/**/*.php", "public/js/*.js"],
