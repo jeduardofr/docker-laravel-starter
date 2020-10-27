@@ -11,12 +11,16 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.ts("resources/ts/index.tsx", "public/js").browserSync({
-    open: "external",
-    proxy: "webserver",
-    files: ["resources/views/**/*.php", "public/js/*.js"],
-    notify: false
-});
+mix.ts("resources/ts/index.tsx", "public/js")
+    .browserSync({
+        open: "external",
+        proxy: "webserver",
+        files: ["resources/views/**/*.php", "public/js/*.js"],
+        notify: false
+    })
+    .postCss("resources/css/tailwind.css", "public/css", [
+        require("tailwindcss")
+    ]);
 
 if (mix.inProduction()) {
     mix.version();
